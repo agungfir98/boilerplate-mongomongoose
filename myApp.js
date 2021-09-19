@@ -20,7 +20,15 @@ const agung = new Person({
 })
 
 const createAndSavePerson = (done) => {
-  done(null /*, data*/);
+  const guguk = new Person({
+    name: 'cihauhau',
+    age: 9,
+    favoriteFoods: ['pelet', 'whiskas']
+  });
+  guguk.save(function(err, data){
+    if(err)return console.error(err);  
+    done(null, data);
+  })
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
