@@ -21,13 +21,16 @@ const agung = new Person({
 
 const createAndSavePerson = (done) => {
   const guguk = new Person({
-    name: 'cihauhau',
-    age: 9,
-    favoriteFoods: ['pelet', 'whiskas']
+    name: "kntl",
+    age: 100,
+    FavoriteFoods: ['Mie', 'Mendoan']
   });
-  guguk.save(function(err, data){
-    if(err)return console.error(err);  
-    done(null, data);
+  guguk.save( function (err, data) {
+    if (err) {
+      console.error(err);
+    }else {
+      done(null, data)
+    }
   })
 };
 
