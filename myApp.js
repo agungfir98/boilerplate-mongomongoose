@@ -52,27 +52,69 @@ const createManyPeople = (arrayOfPeople, done) => {
 };
 
 const findPeopleByName = (personName, done) => {
-  done(null /*, data*/);
+  Person.find({name: personName}, function (err, data) {  
+    if (err) {
+      console.error(err);
+    } else {
+      done(null, data);
+    }
+  })
 };
 
 const findOneByFood = (food, done) => {
-  done(null /*, data*/);
+  Person.find({FavoriteFoods: food}, function (err, data) {
+    if (err) {
+      console.error(err);
+    } else {
+      done(null, data)
+    }
+  })
 };
 
 const findPersonById = (personId, done) => {
-  done(null /*, data*/);
+  Person.findById({_id: personId}, function(err, data) {
+    if(err) {
+      console.error(err);
+    } else {
+      done(null, data);
+    }
+  })
 };
 
 const findEditThenSave = (personId, done) => {
   const foodToAdd = "hamburger";
-
-  done(null /*, data*/);
+  Person.findById({_id: personId}, function (err, data) {  
+    if (err) {
+      console.error(err);
+    } else {
+      data.FavoriteFoods.push(foodToAdd);
+      data.save(function (err, updated) {  
+        if (err) {
+          console.error(err);
+        } else {
+          done(null, updated)
+        }
+      })
+    }
+  })
 };
 
 const findAndUpdate = (personName, done) => {
   const ageToSet = 20;
-
-  done(null /*, data*/);
+  // parameter findOneAndUpdate itu (filter, yang mau diupdate, option (baca documentation macam opsinya), callback)
+  Person.findOneAndUpdate( {name: personName}, {age: ageToSet}, {new: true}, function (err, data) {
+    if (err) {
+      console.error(err)
+    } else {
+      data.save(function (err, newage) {
+        if (err) {
+          console.error(err);
+        } else {
+          done(null,newage)
+        }
+      })
+    }
+  })
 };
 
 const removeById = (personId, done) => {
