@@ -13,11 +13,12 @@ const PersonSchema = new Schema({
 let Person = model('Person', PersonSchema);
 
 // model example
-const agung = new Person({
-  name: 'Agung',
-  age: 23,
-  FavoriteFoods: ['Mie', 'Mendoan']
-})
+
+// const agung = new Person({
+//   name: 'Agung',
+//   age: 23,
+//   FavoriteFoods: ['Mie', 'Mendoan']
+// })
 
 const createAndSavePerson = (done) => {
   const guguk = new Person({
@@ -29,13 +30,25 @@ const createAndSavePerson = (done) => {
     if (err) {
       console.error(err);
     }else {
-      done(null, data)
-    }
-  })
+      done(null, data);
+    };
+  });
 };
 
+const arrayOfPeople = [
+  {name: "Budi", age: 24, FavoriteFoods: ["veggies"]},
+  {name: "Ombing", age: 23, FavoriteFoods: ["meat"]},
+  {name: "Aldi", age: 23, FavoriteFoods: ["meat"]}
+]
+
 const createManyPeople = (arrayOfPeople, done) => {
-  done(null /*, data*/);
+  Person.create(arrayOfPeople, function (err, data) {
+    if (err) {
+      console.error(err);
+    } else {
+      done(null, data);
+    };
+  });
 };
 
 const findPeopleByName = (personName, done) => {
