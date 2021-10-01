@@ -1,8 +1,8 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 const {Schema, model} = mongoose;
-
-mongoose.connect('mongodb+srv://root:kontolatos@mern.6mfvg.gcp.mongodb.net/fccmongoose?retryWrites=true&w=majority').catch(error => console.error(error))
+const kunci = process.env['MONGO_URI'];
+mongoose.connect(kunci)
 
 // Creating a model
 const PersonSchema = new Schema({
