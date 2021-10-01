@@ -15,11 +15,11 @@ let Person = model('Person', PersonSchema);
 
 // model example
 
-// const agung = new Person({
-//   name: 'Agung',
-//   age: 23,
-//   FavoriteFoods: ['Mie', 'Mendoan']
-// })
+const agung = new Person({
+  name: 'Agung',
+  age: 23,
+  FavoriteFoods: ['Mie', 'Mendoan']
+})
 
 const createAndSavePerson = (done) => {
   const guguk = new Person({
