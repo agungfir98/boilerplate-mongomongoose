@@ -2,8 +2,8 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const {Schema, model} = mongoose;
 // GOKIL NGURUSIN ENV BIKIN PUYENG
-// const kunci = process.env.MONGO_URI
-mongoose.connect(process.env.MONGO);
+const kunci = process.env.MONGO_URI
+mongoose.connect(kunci).catch(err => console.error(err));
 
 // Creating a model
 const PersonSchema = new Schema({
